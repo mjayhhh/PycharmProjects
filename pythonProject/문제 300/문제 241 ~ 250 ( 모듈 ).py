@@ -23,12 +23,12 @@ print(time)
 print(type(time))
 
 # # 246. time 모듈, datetime 모듈을 사용해서 1초에 한 번 현재 시간을 출력하는 코드를 작성하세요
-# import time
-# import datetime
-# while True :
-#     now = datetime.datetime.now()
-#     print(now)
-#     time.sleep(1)
+import time
+import datetime
+while True :
+    now = datetime.datetime.now()
+    print(now)
+    time.sleep(1)
 
 # 247. 모듈을 임포트 하는 4가지 방식에 대해 설명해보세요
 # import 이름
@@ -48,3 +48,5 @@ os.rename('C:\\Users\\User\\Desktop\\아무거나2', 'C:\\Users\\User\\Desktop\\
 # 250. numpy 모듈의 arange 함수를 사용해서 0.0부터 5.0까지 0.1씩 증가하는 값을 화면에 출력해보세요.
 import numpy
 print(numpy.arange(0.0, 5.1, 0.1))
+
+
