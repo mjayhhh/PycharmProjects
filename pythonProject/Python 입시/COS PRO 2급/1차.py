@@ -145,3 +145,61 @@ scores = [650, 722, 914, 558, 714, 803, 650, 679, 669, 800]
 ret = solution(scores) # solution에 scores의 값을 대입한뒤 실행하기
 
 print("Solution: return value of the function is", ret, ".") # 결과값 출력하기
+
+#######################################################################################################################
+# 문제 8
+def solution(sentence):  # soulution이라는 함수 만들기
+    str = ''  # 값을 저장하는 str변수 만들기
+    for c in sentence:  # sentence의 값들을 차례로 c에 넣으면서 반복
+        if c != '.' and c != ' ':  # 만약 그 c의 값이 .이거나 공백이 둘중의 하나라도 아니라면
+            str += c  # str에 추가하기
+    size = len(str)  # size를 str의 문자 길이로 정하기
+    for i in range(size // 2):  # size의 길이의 반만큼 반복하기
+        if str[i] != str[size - 1 - i]:  # 만약 str의 첫 문자와 끝 문자가 다르다면
+            return False  # False 를 리턴하기
+    return True  # 아니라면 True를 리턴하기
+
+sentence1 = "never odd or even."  # 문자를 저장하는 sentence1변수 만들기
+ret1 = solution(sentence1)  # sentence1을 넣어서 solution함수 실행하기
+
+print("Solution: return value of the function is", ret1, ".")  # 결과 출력하기
+
+sentence2 = "palindrome"   # 문자를 저장하는 sentence2변수 만들기
+ret2 = solution(sentence2)  # sentence2을 넣어서 solution 함수 실행하기
+
+print("Solution: return value of the function is", ret2, ".")  # 결과 출력하기
+
+#######################################################################################################################
+# 문제 9
+def solution(characters):  # solution 이라는 함수 만들기
+    result = ""  # 문자열을 저장할 result 함수를 만들기
+    for i in range(len(characters)):  # characters의 길이 만큼 반복하기
+        if characters[i - 1] != characters[i]:  # 만약 characters의 1칸 뒤의 문자랑 앞의 문자가 다르다면
+            result += characters[i]  # result에 그 값을 넣기
+    return result  # result 값 리턴하기
+
+characters = "senteeeencccccceeee"  # 문자를 저장하는 characters변수 만들기
+ret = solution(characters)  # characters을 넣어서 solution 함수 실행하기
+
+print("Solution: return value of the function is", ret, ".")  # 결과 출력하기
+
+#######################################################################################################################
+# 문제 10
+def solution(data):  # solution이라는 함수 만들기
+    total = sum(data)  # data의 값의 합을 저장하는 total 변수 만들기
+    average = total / len(data)  # data값의 평균을 구하는 average 변수 만들기
+    cnt = 0  # 개수를 저장할 cnt변수
+    for d in data:  # data의 값을 d에 차례로 넣으면서 반복
+        if d <= average:  # 만약 d의 값이 평균보다 낮거나 같으면
+            cnt += 1   # cnt에 1점 더하기
+    return cnt  # cnt의 값을 리턴하기
+
+data1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  # 숫자가 들어있는 data1리스트
+ret1 = solution(data1)  # data1리스트를 solution에 넣어서 실행하기
+
+print("Solution: return value of the function is", ret1, ".")  # 결과 출력하기
+
+data2 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 10]  # 숫자가 들어있는 data2리스트
+ret2 = solution(data2)  # data2리스트를 solution에 넣어서 실행하기
+
+print("Solution: return value of the function is", ret2, ".")  # 결과 출력하기
