@@ -26,84 +26,84 @@ ret = solution(scores, n)   # 그 값을 만드는 solution함수를 호출한�
 print("solution 함수의 반환 값은", ret, "입니다.") # 결과를 출력
 ######################################################################################################################
 # 2번.장학금을 받는 장학생이 몇명인지 구하기
-def func_a(current_grade, last_grade, rank, max_diff_grade):
-    arr_length = len(current_grade)
-    count = 0
-    for i in range(arr_length):
-        if current_grade[i] >= 80 and rank[i] <= arr_length // 10:
-            count += 1
-        elif current_grade[i] >= 80 and rank[i] == 1:
-            count += 1
-        elif max_diff_grade > 0 and max_diff_grade == current_grade[i] - last_grade[i]:
-            count += 1
-    return count
+def func_a(current_grade, last_grade, rank, max_diff_grade):  # 학생의 최고 점수를 구하는 func_a함수 만들기
+    arr_length = len(current_grade)  # arr_length를 current_grade의 길이로 정하기
+    count = 0   # count를 0으로 정하기
+    for i in range(arr_length):  # arr_length만큼 반복하기
+        if current_grade[i] >= 80 and rank[i] <= arr_length // 10:   # 만약 current_grade의 1번째 학생이 80점 보다 높고 i번째 rank의 값이 arr_length에 10을 나눈거 보다 작거나 같다면
+            count += 1  # count에 1을 더하기
+        elif current_grade[i] >= 80 and rank[i] == 1:   # 만약 current_grade의 i번째 같이 80보다 크거나 같고 rank의 i번째가 1이랑 같다면
+            count += 1  # count에 1을 더하기
+        elif max_diff_grade > 0 and max_diff_grade == current_grade[i] - last_grade[i]: # 만약 max_diff_grade가 0보다 크고 max_diff_grade가 current_grade의 1번째에 last_grade의 i번째를 뺀 값과 같다면
+            count += 1  # 1을 더하기
+    return count    # count를 반환하기
 
-def func_b(current_grade):
-    arr_length = len(current_grade)
-    rank = [1] * arr_length
-    for i in range(arr_length):
-        for j in range(arr_length):
-            if current_grade[i] < current_grade[j]:
-                rank[i] += 1
-    return rank
+def func_b(current_grade):      # 각 학생들의 점수를 구하는 func_b함수
+    arr_length = len(current_grade)  # arr_length를 current_grade의 길이의 리스트로 하기
+    rank = [1] * arr_length     # rank의 arr_length의 길이만큼 리스트를 만들기
+    for i in range(arr_length):     # arr_length의 길이만큼 반복하기
+        for j in range(arr_length):    # arr_length만큼 반복하기
+            if current_grade[i] < current_grade[j]:     # 만약에 current_grade의 i번째 값이 current_grade의 j번째 값보다 낮다면
+                rank[i] += 1       # rank에 1을 더하기
+    return rank     # rank반환하기
 
-def func_c(current_grade, last_grade):
-    max_diff_grade = 1
-    for i in range(len(current_grade)):
-        max_diff_grade = max(max_diff_grade, current_grade[i] - last_grade[i])
-    return max_diff_grade
+def func_c(current_grade, last_grade):      # 학생들의 저번 시험 점수와 이번 시험 점수의 석차가 가장 큰 학생을 구하는 func_c함수
+    max_diff_grade = 1      # max_diff_grade를 1로 정하기
+    for i in range(len(current_grade)):     # current_grade의 길이만큼 반복하기
+        max_diff_grade = max(max_diff_grade, current_grade[i] - last_grade[i])  # 지금까지 나온 석차가 가장 큰 학생과 이번에 나온 석차를 비교해서 더 큰걸 저장
+    return max_diff_grade   # max_diff_grade의 값을 반환하기
 
-def solution(current_grade, last_grade):
-    rank = func_b(current_grade)
-    max_diff_grade = func_c(current_grade, last_grade)
-    answer = func_a(current_grade, last_grade, rank, max_diff_grade)
-    return answer
+def solution(current_grade, last_grade):    # 장학생의 수를 구하는 solution함수
+    rank = func_b(current_grade)    # 학생의 등수를 알아내는 문장
+    max_diff_grade = func_c(current_grade, last_grade)  # 석차가 가장 큰 학생을 알아내는 문장
+    answer = func_a(current_grade, last_grade, rank, max_diff_grade)    # 장학생의 수를 모두 구하는 문장
+    return answer   # answer의 값을 반환
 
-current_grade = [70, 100, 70, 80, 50, 95]
-last_grade = [35, 65, 80, 50, 20, 60]
-ret = solution(current_grade, last_grade)
+current_grade = [70, 100, 70, 80, 50, 95]   # 애들의 최근 점수가 들어있는 current_grade 리스트
+last_grade = [35, 65, 80, 50, 20, 60]   # 애들의 저번 성적이 들어있는 last_grade 리스트
+ret = solution(current_grade, last_grade)   # 장학생의 수를 구하고 그 값을 저장하는 ret변수
 
-print("solution 함수의 반환 값은", ret, "입니다.")
+print("solution 함수의 반환 값은", ret, "입니다.")    # 답을 출력
 ######################################################################################################################
 # 3번. 가장 높은 점수 하나랑 가장 낮은 점수 하나를 제외한 나머지의 점수들의 평균을 계산하기
-def solution(scores):
-    answer = 0
-    scores.sort(reverse=True)
-    for i in range(1, len(scores) - 1):
-        answer += scores[i]
-    answer = answer / (len(scores) - 2)
-    return int(answer)
+def solution(scores):   # 평균을 구하는 solution함수
+    answer = 0  # answer을 0으로 하기
+    scores.sort(reverse=True)   # scores리스트를 내림차순으로 만들기
+    for i in range(1, len(scores) - 1):  # 1부터 scores의 길이의 1을 뺀 값까지 i에 1씩 더하면서 반복
+        answer += scores[i]    # answer에 scores의 i번째 값을 더하기
+    answer = answer / (len(scores) - 2)  # answer에 평균을 넣기
+    return int(answer)  # int형의 answer을 반환하기
 
-scores1 = [35, 28, 98, 34, 20, 50, 85, 74, 71, 7]
-ret1 = solution(scores1)
+scores1 = [35, 28, 98, 34, 20, 50, 85, 74, 71, 7]   # 점수가 들어있는 scores1리스트
+ret1 = solution(scores1)    # 평균을 구하고 그 값을 저장하는 ret1변수
 
-print("solution 함수의 반환 값은", ret1, "입니다.")
+print("solution 함수의 반환 값은", ret1, "입니다.")   # 결과를 출력
 
-scores2 = [1, 1, 1, 1, 1]
-ret2 = solution(scores2)
+scores2 = [1, 1, 1, 1, 1]   # 점수가 들어있는 scores2리스트
+ret2 = solution(scores2)    # socres2의 평균을 구하고 그 값을 저장하는 ret2변수
 
-print("solution 함수의 반환 값은", ret2, "입니다.")
+print("solution 함수의 반환 값은", ret2, "입니다.")   # 결과값을 반환하기
 ######################################################################################################################
-# 4번
-def solution(words, word):
-    count = 0
-    b = 0
-    for i in words:
-        for a in range(4):
-            if word[a] != i[a]:
-                count += 1
-        b = 0
+# 4번. 지정한 단어가 있고 거기에 쓴 단어들이 word와 다른 문자의 개수를 구하기
+def solution(words, word):  # 틀린 개수를 구하는 solution 함수
+    count = 0   # count를 0으로 하기
+    b = 0   # b를 0으로 하기
+    for i in words:  # wrods의 값을 i 에 넣은면서 반복하기
+        for a in range(4):  # 0부터 3까지 1씩 증가하면서 반복
+            if word[a] != i[a]:   # 만약 words의 a번째의 값이 i의 a번째의 값과 다르다면
+                count += 1  # count에 1을 더하기
+        b = 0   # b를 다시 0으로 설정하기
 
-    return count
+    return count    # count의 값을 반환하기
 
-words = ["CODE", "COED", "CDEO"]
-word = "CODE"
-ret = solution(words, word)
+words = ["CODE", "COED", "CDEO"]    # 어떤 사람이 쓴 단어가 들어있는 words리스트
+word = "CODE"   # 지정한 단어를 저장하고 있는 word변수
+ret = solution(words, word) # 틀린 개수를 구하고 그 값을 저장하는 ret변수
 
-print("solution 함수의 반환 값은", ret, "입니다.")
+print("solution 함수의 반환 값은", ret, "입니다.")    # 결과값을 출력함
 ######################################################################################################################
-# 5번
-def solution(member_age, transportation):
+# 5번. 사람들의 총 가격을 구하기( 이때 10명 이상일때는 할인이 있음 )
+def solution(member_age, transportation):   #
 	if transportation == 'Bus':
 		adult_expense = 40000
 		child_expense = 15000
@@ -116,14 +116,14 @@ def solution(member_age, transportation):
 
 	if len(member_age) >= 10:
 		adult_expense = adult_expense * 0.9
-		child_expense = child_expense * 0.8
+		child_expense = child_expense *  0.8
 
 	total_expenses = 0
 	for age in member_age:
 		if age >= 20:
 			total_expenses += adult_expense
 		else:
-			total_expenses += child_expense
+		 total_expenses += child_expense
 
 	return total_expenses
 
