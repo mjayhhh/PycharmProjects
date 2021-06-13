@@ -145,3 +145,55 @@ unit = "C"  # Unit을 저장하는 unit변수
 ret = solution(value, unit)  # solution에 value와 unit을 넣어서 함수 실행한 뒤 ret에 저장
 
 print("solution 함수의 반환 값은", ret, "입니다.")  # 결과 출력하기
+######################################################################################################################
+# 문제 8번
+def solution(number):
+    count = 0
+    while number != 0:
+        n = number % 10
+        if n == 2 or n == 3 or n == 5 or n == 7:
+            count += 1
+        number //= 10
+    return count
+
+number = 29022531
+ret = solution(number)
+
+print("solution 함수의 반환 값은", ret, "입니다.")
+######################################################################################################################
+# 문제 9번
+def solution(votes, N, K):
+    counter = [0 for _ in range(N + 1)]
+    for x in votes:
+        counter[x] += 1
+    answer = 0
+    for c in counter:
+        if c == K:
+            answer += 1
+    return answer
+
+votes = [2, 5, 3, 4, 1, 5, 1, 5, 5, 3]
+N = 5
+K = 2
+ret = solution(votes, N, K)
+
+print("solution 함수의 반환 값은", ret, "입니다.")
+######################################################################################################################
+# 문제 10번
+def solution(purchase):
+    total = 0
+    for p in purchase:
+        if p >= 1000000:
+            total += 50000
+        elif p >= 600000:
+            total += 30000
+        elif p >= 400000:
+            total += 20000
+        elif p >= 200000:
+            total += 10000
+    return total
+
+purchase = [150000, 210000, 399990, 990000, 1000000]
+ret = solution(purchase)
+
+print("solution 함수의 반환 값은", ret, "입니다.")
