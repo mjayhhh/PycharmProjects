@@ -1,13 +1,13 @@
 #######################################################################################################################
 # 1번
-def solution(schedule):
+def solution(schedule): # X의 개수를 구하는 함수
     answer = []
     for idx, i in enumerate(schedule):
         if i == "X":
             answer.append(idx + 1)
     return answer
 
-schedule = ["O", "X", "X", "O", "O", "O", "X", "O", "X", "X"]
+schedule = ["O", "X", "X", "O", "O", "O", "X", "O", "X", "X"]   # O나 X를 쓴 학생들의 의견
 ret = solution(schedule)
 
 print("solution 함수의 반환 값은", ret, "입니다.")
@@ -185,49 +185,17 @@ print("solution 함수의 반환 값은 ", ret2, " 입니다.")
 #######################################################################################################################
 # 9번
 def solution(height):
-    count = 0
-    list = height
-    height = 0
-    height = []
-    for i in list:
-        for a in i:
-            height.append(a)
-    for a in range(len(height) - 1):
-        if i == 0 and a == 0:
-            if height[a] < height[a + 1] and height[a] < height[a + 4]:
-                count += 1
-        elif i == 0 and a == 3:
-            if height[a] < height[a - 1] and height[a] < height[a + 4]:
-                count += 1
-        elif i == 3 and a == 3:
-            if height[a] < height[a - 1] and height[a] < height[a - 4]:
-                count += 1
-        elif i == 3 and a == 0:
-            if height[a] < height[a + 1] and height[a] < height[a - 4]:
-                count += 1
-        elif a == 0 and i == 1 :
-            if height[a] < height[a + 1] and height[a] < height[a - 4] and height[a] < height[a + 4]:
-                count += 1
-        elif a == 0 and i == 2 :
-            if height[a] < height[a + 1] and height[a] < height[a - 4] and height[a] < height[a + 4]:
-                count += 1
-        elif a == 3 and i == 1:
-            if height[a] < height[a - 1] and height[a] < height[a + 4] and height[a] < height[a - 4]:
-                count += 1
-        elif a == 3 and i == 2:
-            if height[a] < height[a - 1] and height[a] < height[a + 4] and height[a] < height[a - 4]:
-                count += 1
-        elif i == 0 :
-            if height[a] < height[a - 1] and height[a] < height[a + 1] and height[a] < height[a + 4]:
-                count += 1
-        elif i == 3:
-            if height[a] < height[a - 1] and height[a] < height[a + 1] and height[a] < height[a - 4]:
-                count += 1
-        elif i == 1:
-            if height[a] < height[a - 1] and height[a] < height[a + 1] and height[a] < height[a + 4] and height[a] < height[a - 4]:
-                count += 1
-        elif i == 2:
-            if height[a] < height[a - 1] and height[a] < height[a + 1] and height[a] < height[a + 4] and height[a] < height[a - 4]:
+    count = 0   # 위험지역의 총 개수
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+    for i in range(4):  # 4번 반복
+        for a in range(4):  # 4번 반복
+            위험지역 = True
+            for k in range(4):
+                if 0 <= i + dx[k] and i + dx[k] < 4 and 0 <= a + dy[k] and a + dy[k] < 4:
+                    if height[i+dx[k]][a+dy[k]] <= height[i][a]:
+                        위험지역 = False
+            if 위험지역:
                 count += 1
     return count
 
@@ -251,30 +219,3 @@ ret = solution(scores, cutline)
 #[실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
 print("solution 함수의 반환 값은", ret, "입니다.")
 ########################################################################################################################
-# if i == 0 and a == 0:
-#     if height[i][a] < height[i][a + 1] and height[i][a] < height[i + 1][a]:
-#         count += 1
-# elif i == 0 and a == 3:
-#     if height[i][a] < height[i][a - 1] and height[i][a] < height[i + 1][a]:
-#         count += 1
-# elif i == 3 and a == 3:
-#     if height[i][a] < height[i][a - 1] and height[i][a] < height[i - 1][a]:
-#         count += 1
-# elif i == 3 and a == 0:
-#     if height[i][a] < height[i][a + 1] and height[i][a] < height[i - 1][a]:
-#         count += 1
-# elif i == 0 :
-#     if height[i][a] < height[i][a - 1] and height[i][a + 1] and height[i + 1][a]:
-#         count += 1
-# elif i == 3 :
-#     if height[i][a] < height[i][a - 1] and height[i][a + 1] and height[i - 1][a]:
-#         count += 1
-# elif a == 0 and i == 1 or 2 :
-#     if height[i][a] < height[i][a + 1] and height[i - 1][a] and height[i + 1][a]:
-#         count += 1
-# elif a == 3 and i == 1 or 2:
-#     if height[i][a] < height[i][a - 1] and height[i + 1][a] and height[i - 1][a]:
-#         count += 1
-# else :
-#     if height[i][a] < height[i][a - 1] and height[i + 1][a] and height[i - 1][a + 1] and height[i][a - 1]:
-#         count += 1
