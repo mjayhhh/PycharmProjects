@@ -145,8 +145,11 @@ print("Solution: return value of the function is", ret, ".")
 #######################################################################################################################
 # 5번
 def solution(n):
-    # Write code here.
-    answer = 0
+    answer = 1
+    num = 1
+    for a in range(n - 1):
+        num += (n - 1) * 2
+        answer += num
     return answer
 
 
@@ -166,6 +169,29 @@ print("Solution: return value of the function is", ret2, ".")
 # 6번
 def solution(pos):
     answer = 8
+    가로 = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+    세로 = [1, 2, 3, 4, 5, 6, 7, 8]
+    for num, value in enumerate(가로):
+        if value == pos[0]:
+            num2 = num + 1
+    length = len(가로)
+    a = int(pos[1])
+    if num2 + 2 > length or a + 1 > length :
+        answer -= 1
+    if num2 + 2 > length or a - 1 < 1 :
+        answer -= 1
+    if num2 + 1 > length or a + 2 > length:
+        answer -= 1
+    if num2 + 1 > length or a - 2 < 1 :
+        answer -= 1
+    if num2 - 1 < 1 or a + 2 > length :
+        answer -= 1
+    if num2 - 1 < 1 or a - 2 < 1 :
+        answer -= 1
+    if num2 - 2 < 1 or a - 1 < 1 :
+        answer -= 1
+    if num2 - 2 < 1 or a + 1 > length :
+        answer -= 1
     return answer
 
 #The following is code to output testcase.
