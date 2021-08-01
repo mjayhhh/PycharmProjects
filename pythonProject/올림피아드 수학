@@ -1,0 +1,143 @@
+# 1
+answer = 0
+n = 7
+for i in range(2019):
+    n *= 7
+print("1번의 값 :", n % 5, "/ 1번의 답 : 2번")
+
+
+# 4
+numbers = [8, 5, 4, 9, 11, 1, 12, 15, 2, 6, 7, 10]
+n = 0
+m = 0
+n2 = 0
+for _ in range(3):
+    for i in range(len(numbers)):
+        while n != 1 :
+            if i + m + 1 < len(numbers):
+                if numbers[i + m] > numbers[i + m + 1]:
+                    n2 = numbers[i + m]
+                    numbers[i + m] = numbers[i + m + 1]
+                    numbers[i + m + 1] = n2
+                    m += 1
+                else :
+                    n = 1
+            else:
+                n = 1
+        m = 0
+        n =0
+print("4번의 값 :", numbers, "/ 4번의 답 : 4번")
+
+
+# 7
+n = 0
+for i in range(3, 16) :
+    n += i
+answer = n - 106
+print("7번의 값 :", answer, "/ 7번의 답 : 3번")
+
+# 8
+answer = 0
+m = 1
+A = 10
+B = 11
+C = 12
+D = 13
+E = 14
+F = 15
+G = 16
+H = 17
+I = 18
+J = 19
+n = "GD"
+length = len(n)
+for i in n :
+    if i == "A":
+        if m == length :
+            answer += A
+        else :
+            answer += A * (2 * (10 ** (length - m)))
+            m += 1
+    elif i == "B":
+        if m == length :
+            answer += B
+        else :
+            answer += B * (2 * (10 ** (length - m)))
+            m += 1
+    elif i == "C":
+        if m == length :
+            answer += C
+        else :
+            answer += C * (2 * (10 ** (length - m)))
+            m += 1
+    elif i == "D":
+        if m == length :
+            answer += D
+        else :
+            answer += D * (2 * (10 ** (length - m)))
+            m += 1
+    elif i == "F":
+        if m == length :
+            answer += F
+        else :
+            answer += F * (2 * (10 ** (length - m)))
+            m += 1
+    elif i == "G":
+        if m == length :
+            answer += G
+        else :
+            answer += G * (2 * (10 ** (length - m)))
+            m += 1
+    elif i == "H":
+        if m == length :
+            answer += H
+        else :
+            answer += H * (2 * (10 ** (length - m)))
+            m += 1
+    elif i == "I":
+        if m == length :
+            answer += I
+        else :
+            answer += I * (2 * (10 ** (length - m)))
+            m += 1
+    elif i == "J":
+        if m == length :
+            answer += J
+        else :
+            answer += J * (2 * (10 ** (length - m)))
+            m += 1
+    else :
+        if m == length :
+            answer += A
+        else :
+            answer += i * (2 * (10 ** (length - m)))
+            m += 1
+print("8번의 값 :", answer, "/ 8번의 답 : 4번")
+
+
+# 11번
+list = []
+for i in range(1, 3055) :
+    if 12378 % i == 0 :
+        if 3054 % i == 0 :
+            list.append(i)
+print("11번의 값 :", max(list), "/ 11번의 답 : 2번")
+
+
+# 16번
+num = 2 ** 2017 + 3 ** 2017 + 5 ** 2017 + 7 ** 2017
+print("16번의 값 :", num % 10, "/ 16번의 답 : 4번 ")
+
+
+# 19번
+num = 0
+count = 0
+for i in range(1, 100000):
+    num += i
+    while num != 0 :
+        if num % 10 == 1:
+            count += 1
+            num //= 10
+        else :
+            num //= 10
+print("19번의 값 :", count, "/ 19번의 답 : 4번")
